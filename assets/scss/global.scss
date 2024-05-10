@@ -1,0 +1,14 @@
+@import './_font.scss';
+@import './color';
+@import './mixin';
+
+* {
+    margin: 0;
+    padding: 0;
+
+    // Font
+    font-family: 'Noto Sans KR', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}

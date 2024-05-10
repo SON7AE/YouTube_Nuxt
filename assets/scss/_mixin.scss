@@ -1,0 +1,11 @@
+@mixin flexbox($jc: center, $ai: center) {
+    display: flex;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
