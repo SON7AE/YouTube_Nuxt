@@ -51,7 +51,7 @@ const navItems = ref([
     @include flex-center;
     width: 100%;
 
-    margin-top: 100px;
+    margin-top: 88px;
 
     &__list {
         @include flex-center;
@@ -64,8 +64,10 @@ const navItems = ref([
             @include flex-center;
 
             padding: 6px 12px;
+
             background-color: $color-gray-200;
             border-radius: 20px;
+            color: $color-black-700;
 
             cursor: pointer;
         }
