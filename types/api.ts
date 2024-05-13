@@ -9,7 +9,7 @@ export interface Article {
     content: string;
     description: string;
     publishedAt: string;
-    source: { id: null; name: "[Removed]" };
+    source: { id?: number; name?: string };
     title: string;
     url: string;
     urlToImage: string;
