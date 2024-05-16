@@ -1,7 +1,7 @@
 <template>
     <div class="page">
         <!-- {{ data?.articles }} -->
-        <CardUI v-for="article in data?.articles" :key="article.url" />
+        <CardUI v-for="article in data?.articles" :key="article.url" :data="article" />
     </div>
 </template>
 
@@ -10,7 +10,7 @@ import CardUI from "./components/Card.vue";
 import type { Api } from "../types/api";
 
 const API_KEY = "ce4c280c9dff4ac0a98c9d7ea869194d";
-const API_URL = `https://newsapi.org/v2/everything?q=Apple&from=2024-05-09&sortBy=popularity&apiKey=${API_KEY}`;
+const API_URL = `https://newsapi.org/v2/everything?q=Apple&from=2024-05-13&sortBy=popularity&apiKey=${API_KEY}`;
 const { data, pending, error, refresh } = await useAsyncData<Api>("getNews", () => $fetch(API_URL));
 </script>
 
