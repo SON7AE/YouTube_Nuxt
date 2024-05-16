@@ -14,7 +14,7 @@
             </div>
             <div class="card__info-box__body">
                 <span class="contents">
-                    {{ data.content }}
+                    <span v-html="data.content"></span>
                 </span>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <img src="@/assets/icons/user.svg" alt="" class="image" />
             </div>
             <div class="card__profile-box__detail">
-                <span class="name">9Diin</span>
+                <span class="name">{{ data.author }}</span>
                 <span class="date">{{ dayjs(data.publishedAt).format("YYYY-MM-DD HH:mm:ss") }}</span>
             </div>
         </div>
