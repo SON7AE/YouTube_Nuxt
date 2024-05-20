@@ -7,10 +7,10 @@
         <div class="card__info-box">
             <div class="card__info-box__header">
                 <div class="broadcast">
-                    <img :src="logo" :alt="data.title" class="broadcast__logo" />
+                    <img :src="logo" alt="" class="broadcast__logo" />
                     <span class="broadcast__company">{{ data.source.name }}</span>
                 </div>
-                <div class="title">{{ data.title }}</div>
+                <span class="title">{{ data.title }}</span>
             </div>
             <div class="card__info-box__body">
                 <span class="contents">
@@ -37,6 +37,7 @@ import type { Article } from "~/types/api";
 interface Props {
     data: Article;
 }
+
 const props = defineProps<Props>();
 const { data } = toRefs(props);
 

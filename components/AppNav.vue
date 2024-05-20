@@ -7,43 +7,45 @@
 </template>
 
 <script setup lang="ts">
-const navItems = ref([
+import type { Nav } from "../types/nav";
+
+const navItems = ref<Nav[]>([
     {
         idx: 0,
-        label: '일반시사',
-        value: 'General',
+        label: "일반시사",
+        value: "General",
     },
     {
         idx: 1,
-        label: '비즈니스',
-        value: 'Business',
+        label: "비즈니스",
+        value: "Business",
     },
     {
         idx: 2,
-        label: '엔터테인먼트',
-        value: 'Entertainment',
+        label: "엔터테인먼트",
+        value: "Entertainment",
     },
     {
         idx: 3,
-        label: '건강',
-        value: 'Health',
+        label: "건강",
+        value: "Health",
     },
     {
         idx: 4,
-        label: '과학',
-        value: 'Science',
+        label: "과학",
+        value: "Science",
     },
     {
         idx: 5,
-        label: '스포츠',
-        value: 'Sports',
+        label: "스포츠",
+        value: "Sports",
     },
     {
         idx: 6,
-        label: '테크놀리지',
-        value: 'Technology',
+        label: "테크놀리지",
+        value: "Technology",
     },
-])
+]);
 </script>
 
 <style lang="scss" scoped>
