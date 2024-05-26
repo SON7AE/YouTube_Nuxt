@@ -16,7 +16,9 @@
         "nuxt": "^3.11.2",
         "pinia": "^2.1.7",
         "vue": "^3.4.27",
-        "vue-router": "^4.3.2"
+        "vue-router": "^4.3.2",
+        "vue-spinner": "^1.0.4",
+        "vue3-spinners": "^1.2.2"
     },
     "devDependencies": {
         "sass": "^1.77.0"

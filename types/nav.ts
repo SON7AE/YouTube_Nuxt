@@ -3,4 +3,5 @@ export interface Nav {
     label: string;
     value: string;
     path: string;
+    isClicked: boolean;
 }

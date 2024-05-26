@@ -19,7 +19,6 @@ export const useStore = defineStore("store", () => {
 
         try {
             articleList.value = await axios.get(API_URL).then((res) => {
-                console.log(res.data.articles);
                 return res.data.articles;
             });
         } catch (error) {

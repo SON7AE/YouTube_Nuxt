@@ -1,63 +1,80 @@
 <template>
     <nav class="nav">
         <!-- 방법01: 템플릿 참조 ref를 활용하는 방법 -->
-        <ul class="nav__list">
-            <li v-for="item in navItems" class="nav__list__item">
-                <NuxtLink :to="item.path">
-                    {{ item.label }}
-                </NuxtLink>
-            </li>
-        </ul>
+        <div class="nav__list">
+            <NuxtLink :to="item.path" v-for="item in navItems" class="nav__list__item" :class="{ active: item.isClicked }">
+                {{ item.label }}
+            </NuxtLink>
+        </div>
     </nav>
 </template>
 
 <script setup lang="ts">
 import type { Nav } from "../types/nav";
 
+const route = useRoute();
 const navItems = ref<Nav[]>([
     {
         idx: 0,
         label: "일반시사",
         value: "General",
         path: "general",
+        isClicked: true,
     },
     {
         idx: 1,
         label: "비즈니스",
         value: "Business",
         path: "business",
+        isClicked: false,
     },
     {
         idx: 2,
         label: "엔터테인먼트",
         value: "Entertainment",
         path: "entertainment",
+        isClicked: false,
     },
     {
         idx: 3,
         label: "건강",
         value: "Health",
         path: "health",
+        isClicked: false,
     },
     {
         idx: 4,
         label: "과학",
         value: "Science",
         path: "science",
+        isClicked: false,
     },
     {
         idx: 5,
         label: "스포츠",
         value: "Sports",
         path: "sports",
+        isClicked: false,
     },
     {
         idx: 6,
         label: "테크놀리지",
         value: "Technology",
         path: "technology",
+        isClicked: false,
     },
 ]);
+
+watch(
+    () => route.params.id,
+    () => {
+        navItems.value.forEach((item: Nav) => {
+            item.isClicked = false;
+
+            if (route.params.id === item.path) item.isClicked = true;
+        });
+    }
+);
 </script>
 
 <style lang="scss" scoped>
@@ -70,6 +87,7 @@ const navItems = ref<Nav[]>([
     &__list {
         @include flex-center;
         list-style: none;
+
         width: 100%;
 
         gap: 24px;
@@ -81,9 +99,15 @@ const navItems = ref<Nav[]>([
 
             background-color: $color-gray-200;
             border-radius: 20px;
+            text-decoration: none;
             color: $color-black-700;
 
             cursor: pointer;
+
+            &.active {
+                background-color: #494949;
+                color: $color-white-000;
+            }
         }
     }
 }
