@@ -1,21 +1,31 @@
-import { defineStore } from 'pinia'
-import axios from 'axios'
+import { defineStore } from "pinia";
+import axios from "axios";
+import type { Article } from "~/types/api";
 
-const API_KEY = 'ce4c280c9dff4ac0a98c9d7ea869194d'
-const API_URL = `https://newsapi.org/v2/everything?q=Apple&from=2024-05-09&sortBy=popularity&apiKey=${API_KEY}`
+export const useStore = defineStore("store", () => {
+    // State
+    const searchValue = ref<string>("korea");
+    const articleList = ref<Article[]>([]);
 
-export const useStore = defineStore('store', {
-    state: () => ({}),
-    getters: {},
-    actions: {
-        async getNews() {
-            try {
-                await axios.get(API_URL).then((res) => {
-                    return res
-                })
-            } catch (error) {
-                console.log(error)
-            }
-        },
-    },
-})
+    // Mutations
+    const changeSearchValue = (payload: string) => {
+        searchValue.value = payload;
+    };
+
+    // Actions
+    const getNews = async () => {
+        const API_KEY = "ce4c280c9dff4ac0a98c9d7ea869194d";
+        const API_URL = `https://newsapi.org/v2/everything?q=${searchValue.value}&from=2024-05-24&sortBy=popularity&apiKey=${API_KEY}`;
+
+        try {
+            articleList.value = await axios.get(API_URL).then((res) => {
+                console.log(res.data.articles);
+                return res.data.articles;
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    return { searchValue, articleList, changeSearchValue, getNews };
+});

@@ -5,11 +5,16 @@
 </template>
 
 <script setup lang="ts">
-import CardComponent from "./components/Card.vue";
+import CardComponent from "../components/Card.vue";
 import { useStore } from "~/stores/api";
 
+const route = useRoute();
 const store = useStore();
 await useAsyncData("getNews", () => store.getNews());
+
+onMounted(() => {
+    store.changeSearchValue(String(route.params.id));
+});
 </script>
 
 <style lang="scss" scoped>
